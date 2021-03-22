@@ -51,3 +51,4 @@
 - import_playbook: workshop-setup.yml
 - import_playbook: yubikey-setup.yml
 - import_playbook: shell-configuration.yml
+- import_playbook: rclone-configuration.yml
