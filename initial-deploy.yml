@@ -47,6 +47,9 @@
         - com.spotify.Client
         - com.discordapp.Discord
         - org.keepassxc.KeePassXC
+        - com.valvesoftware.Steam.CompatibilityTool.Proton
+        - com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+        - com.valvesoftware.Steam.CompatibilityTool.Proton-Exp
 
 - import_playbook: workshop-setup.yml
 - import_playbook: yubikey-setup.yml
