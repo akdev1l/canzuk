@@ -1,0 +1,13 @@
+---
+- name: configure system to use yubikey
+  hosts: localhost
+  tasks:
+    - name: install yubikey packages
+      become: yes
+      yum:
+        name:
+          - yubikey-manager-qt
+          - yubikey-manager
+          - ykclient
+          - yubioath-desktop
+        state: present

@@ -1,0 +1,11 @@
+---
+- name: workshop configuration
+  hosts: localhost
+  tasks:
+    - name: create workshop
+      become: yes
+      file:
+        path: /var/lib/workshop
+        state: directory
+        owner: akdev
+        group: akdev

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ln -sv "$PWD/hooks/apply-config" .git/hooks/post-commit
