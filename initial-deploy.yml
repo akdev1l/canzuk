@@ -28,6 +28,7 @@
         name:
           - akmod-nvidia
           - xorg-x11-drv-nvidia
+          - xorg-x11-drv-nvidia-cuda
         state: present
 
     - name: enable flathub remote
