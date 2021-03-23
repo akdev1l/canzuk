@@ -1,0 +1,16 @@
+---
+- name: prepare virtualization platform
+  hosts: localhost
+  tasks:
+    - name: install virtualization packages
+      become: yes
+      yum:
+        name:
+          - libvirt
+          - virt-manager
+    - name: enable libvirt at boot
+      become: yes
+      systemd:
+        service: libvirtd
+        enabled: yes
+        state: started

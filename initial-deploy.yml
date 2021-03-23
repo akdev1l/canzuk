@@ -4,7 +4,7 @@
   tasks:
     - name: set hostname
       become: yes
-t     hostname:
+      hostname:
         name: canzuk.hq.akdev.xyz
 
     - name: install packages
@@ -58,3 +58,4 @@ t     hostname:
 - import_playbook: shell-configuration.yml
 - import_playbook: rclone-configuration.yml
 - import_playbook: gaming-configuration.yml
+- import_playbook: libvirt-configuration.yml

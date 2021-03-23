@@ -1,4 +1,0 @@
-#!/bin/bash
-
-flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak --user install -y com.valveSoftware.Steam Spotify Discord KeepassXC
