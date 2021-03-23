@@ -2,6 +2,11 @@
 - name: configure desktop from Fedora KDE Live default session
   hosts: localhost
   tasks:
+    - name: set hostname
+      become: yes
+t     hostname:
+        name: canzuk.hq.akdev.xyz
+
     - name: install packages
       become: yes
       yum:
