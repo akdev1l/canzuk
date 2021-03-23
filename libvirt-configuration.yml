@@ -9,6 +9,7 @@
           - libvirt
           - virt-manager
           - qemu-kvm
+          - virt-viewer
     - name: enable libvirt at boot
       become: yes
       systemd:
