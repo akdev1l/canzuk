@@ -6,6 +6,7 @@
       become: yes
       file:
         path: /var/lib/workshop
+        mode: '0750'
         state: directory
         owner: akdev
         group: akdev

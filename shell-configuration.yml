@@ -23,21 +23,24 @@
     - name: drop in .vimrc
       copy:
         src: vimrc
-        dest: "{{lookup('env', 'HOME')}}/.vimrc"
+        mode: '0600'
+        dest: "{{ lookup('env', 'HOME') }}/.vimrc"
 
     - name: install tmux-themepack
       git:
         repo: https://github.com/jimeh/tmux-themepack.git
-        dest: "{{lookup('env', 'HOME')}}/.config/tmux-themepack"
+        dest: "{{ lookup('env', 'HOME') }}/.config/tmux-themepack"
+        version: 1.1.0
 
     - name: drop in .tmux.conf
       copy:
         src: tmux.conf
-        dest: "{{lookup('env', 'HOME')}}/.tmux.conf"
+        mode: '0600'
+        dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
 
     - name: change shell to /usr/bin/zsh
       become: yes
       user:
-        name: "{{lookup('env', 'USER')}}"
+        name: "{{ lookup('env', 'USER') }}"
         shell: /usr/bin/zsh
 
