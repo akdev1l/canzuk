@@ -60,3 +60,4 @@
 - import_playbook: gaming-configuration.yml
 - import_playbook: libvirt-configuration.yml
 - import_playbook: kde-configuration.yml
+- import_playbook: git-configuration.yml
