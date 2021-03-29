@@ -1,0 +1,6 @@
+[user]
+	signingkey = 957D897A57ECC0A8344B0E0FF1E176DCE39BD716
+	email = alex@akdev.xyz
+	name = Alex Diaz
+[commit]
+    gpgsign = true
