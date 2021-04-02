@@ -11,6 +11,7 @@
           - podman
           - tmux
           - vim
+          - ripgrep
           - fira-code-fonts
         state: present
 
@@ -43,4 +44,15 @@
       user:
         name: "{{ lookup('env', 'USER') }}"
         shell: /usr/bin/zsh
+    
+    - name: install oh-my-zsh
+      script:
+        cmd: oh-my-zsh.sh --unattended
+        creates: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+
+    - name: deploy custom zshrc
+      copy:
+        src: zshrc
+        dest: "{{ lookup('env', 'HOME') }}/.zshrc"
+        mode: '0600'
 
