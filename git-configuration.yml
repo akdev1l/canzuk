@@ -4,6 +4,6 @@
   tasks:
     - name: copy .gitconfig
       copy:
-        src: gitconfig
+        src: home/gitconfig
         dest: "{{ lookup('env', 'HOME') }}/.gitconfig"
         mode: '0600'
