@@ -23,9 +23,21 @@
 
     - name: drop in .vimrc
       copy:
-        src: vimrc
+        src: home/vimrc
         mode: '0600'
         dest: "{{ lookup('env', 'HOME') }}/.vimrc"
+
+    - name: create vim configuration directory
+      file:
+        path: "{{ lookup('env', 'HOME') }}/.config/vim/templates"
+        state: directory
+        mode: '0755'
+
+    - name: drop custom vim templates
+      copy:
+        src: home/config/vim/templates
+        dest: "{{ lookup('env', 'HOME') }}/.config/vim/templates"
+        mode: '0755'
 
     - name: install tmux-themepack
       git:
@@ -35,7 +47,7 @@
 
     - name: drop in .tmux.conf
       copy:
-        src: tmux.conf
+        src: home/tmux.conf
         mode: '0600'
         dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
 
@@ -52,7 +64,7 @@
 
     - name: deploy custom zshrc
       copy:
-        src: zshrc
+        src: home/zshrc
         dest: "{{ lookup('env', 'HOME') }}/.zshrc"
         mode: '0600'
 
