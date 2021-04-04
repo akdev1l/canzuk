@@ -30,16 +30,16 @@ def main():
     snapshot_path = cli_args.instance.split("@")[-1]
 
     snapshot_list = get_snapshots(snapshot_path)
-    logger.info(f"found {len(snapshot_list)} snapshots")
+    logger.info(f"found {len(snapshot_list)} snapshots [max: {snapshot_max}]")
 
-    snapshots_to_prune = snapshot_list[:-snapshot_max+1]
+    snapshots_to_prune = snapshot_list[:-snapshot_max]
     logger.info(f"will prune {len(snapshots_to_prune)}")
 
     remove_snapshots(snapshots_to_prune)
     create_snapshot(src_path, snapshot_path)
 
 def get_snapshots(snapshot_path):
-    top_dir = path.dirname(snapshot_path)
+    top_dir = snapshot_path
     logger.info(f"getting snapshots from {top_dir}")
 
     subvolumes = listdir(top_dir)
@@ -48,6 +48,7 @@ def get_snapshots(snapshot_path):
         for subvolume in subvolumes
     ]
 
+    snapshots.sort()
     return snapshots
     
 def remove_snapshots(snapshots_to_prune):
@@ -70,14 +71,14 @@ def remove_snapshot(snapshot):
         logger.error(btrfs_run.stderr)
         raise Exception("btrfs command failed")
 
-    logger.info(f"snapshot succesfullt removed: {snapshot}")
+    logger.info(f"snapshot succesfully removed: {snapshot}")
 
 def create_snapshot(src_path, snapshot_path):
     new_snapshot_path = path.join(snapshot_path, strftime("%Y-%m-%d-%H-%M"))
     logger.info(f"creating snapshot: {src_path} -> {new_snapshot_path}")
 
     if path.exists(new_snapshot_path):
-        logger.warning(f"snapshot path '{snapshot_path}' already exists. skipping.")
+        logger.warning(f"snapshot path '{new_snapshot_path}' already exists. skipping.")
         return
     
     btrfs_cmd = [
