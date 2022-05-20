@@ -10,6 +10,6 @@
 
     - name: copy rclone@ systemd service
       copy:
-        src: rclone@.service
+        src: home/config/systemd/rclone@.service
         mode: '0600'
         dest: "{{ lookup('env', 'HOME') }}/.config/systemd/user"

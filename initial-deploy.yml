@@ -57,7 +57,9 @@
 - import_playbook: yubikey-setup.yml
 - import_playbook: shell-configuration.yml
 - import_playbook: rclone-configuration.yml
+- import_playbook: nvidia-configuration.yml
 - import_playbook: gaming-configuration.yml
 - import_playbook: libvirt-configuration.yml
 - import_playbook: kde-configuration.yml
 - import_playbook: git-configuration.yml
+- import_playbook: storage-configuration.yml

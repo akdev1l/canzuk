@@ -1,0 +1,37 @@
+---
+- name: backup configuration
+  hosts: localhost
+  tasks:
+    - name: install backup tools
+      become: yes
+      yum:
+        name:
+          - borgbackup
+        state: present
+
+    - name: deploy borg-wrapper script
+      become: yes
+      copy:
+        src: usr/local/bin/borg-wrapper
+        dest: /usr/local/bin/borg-wrapper
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: deploy borg-wrapper systemd service and timer
+      become: yes
+      notify: systemd-reload
+      copy:
+        src: "systemd/{{ item }}"
+        dest: "/etc/systemd/system/{{ item }}"
+        mode: '0644'
+      loop:
+        - borg-wrapper@.service
+        - borg-wrapper@.timer
+
+    - name: enable borg-wrapper timer
+      become: yes
+      systemd:
+        name: "{{ item }}"
+        enabled: yes 
+      loop:

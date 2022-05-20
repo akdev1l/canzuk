@@ -2,6 +2,14 @@
 - name: configure storage
   hosts: localhost
   tasks:
+    - name: create mountpoints
+      become: yes
+      file:
+        state: directory
+        path: "{{item}}"
+      loop:
+        - /var/lib/workshop
+        - /var/lib/storage
     - name: mount workshop local disk
       become: yes
       mount:
@@ -10,6 +18,11 @@
         opts: compress,discard
         fstype: btrfs
         state: mounted
-    - name: mount local nas disk
-      debug: 
-        msg: mount on /var/lib/nas
+    - name: mount guest shared storage
+      become: yes
+      mount: 
+        src: virt0.hq.akdev.xyz:/var/lib/storage/guests/shared
+        path: /var/lib/storage
+        opts: noauto,x-systemd.automount,x-systemd.mount-timeout=30,_netdev
+        fstype: auto
+        state: mounted

@@ -9,3 +9,11 @@
           - yakuake
           - google-noto-emoji-color-fonts
           - ibus-uniemoji
+          - kde-connect
+          - vlc
+    - name: remove unnecessary KDE applications
+      yum:
+        name:
+          - karbon
+          -
+      

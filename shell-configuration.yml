@@ -29,14 +29,14 @@
 
     - name: create vim configuration directory
       file:
-        path: "{{ lookup('env', 'HOME') }}/.config/vim/templates"
+        path: "{{ lookup('env', 'HOME') }}/.config/vim"
         state: directory
         mode: '0755'
 
     - name: drop custom vim templates
       copy:
         src: home/config/vim/templates
-        dest: "{{ lookup('env', 'HOME') }}/.config/vim/templates"
+        dest: "{{ lookup('env', 'HOME') }}/.config/vim"
         mode: '0755'
 
     - name: install tmux-themepack
