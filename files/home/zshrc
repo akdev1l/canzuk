@@ -18,3 +18,5 @@ export EDITOR=vim
 export VISUAL=vim
 export LESS="-r -S"
 export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+alias ls='ls --color=tty --group-directories-first'
+
